@@ -33,9 +33,7 @@
 
   <body>
     <!-- 상단 영역 -->
-    <div id="top-area">
-      <header class="top-area ibx common-area"></header>
-    </div>
+    <?php include "inc/top_area.inc" ?>
     <!-- 메인 영역 -->
 
     <div id="main-area">
@@ -79,9 +77,7 @@
       
 
     <!-- 하단 영역 -->
-    <div id="footer-area">
-      <footer class="footer-area ibx common-area"></footer>
-    </div>
+    <?php include "inc/footer_area.inc" ?>
 
     <!-- 위로가기버튼 -->
     <a href="#" class="tbtn fi fi-angle-up">

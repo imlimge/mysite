@@ -35,7 +35,7 @@ function setValue(){
   catch(err){ //err 메시지 받기
     alert(err);
     //메인으로 보내기
-    location.href='index.html'
+    location.href='index.php'
   } /// catch ///
 
   // 3. url키값 추출하기
