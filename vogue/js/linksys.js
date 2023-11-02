@@ -106,11 +106,14 @@ $(()=>{
       case '갤러리':
         url="gallery";
         break;
+      case '로그아웃':
+        url="index";
+        break;
     }/// switch case ///
 
     // 3. 페이지 이동하기
     // 내부페이지는 현재페이지에서 이동하기
-    if(atxt=='로그인'||atxt=='회원가입'||atxt=='갤러리'){
+    if(atxt=='로그인'||atxt=='회원가입'||atxt=='갤러리'||atxt=='로그아웃'){
       location.href= url+'.php';
     }
     else{// SNS 타 시스템은 새창열기

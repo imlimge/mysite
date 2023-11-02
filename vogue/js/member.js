@@ -173,6 +173,77 @@ form.logF input[type=password]`)
       } //// if ////
 
       else{ // 통과시
+
+        
+
+          $.ajax({
+            // 1.전송할페이지(url)
+            url:"./process/chkID.php",
+            // 2.전송방식(type)
+            type:"post",
+            // 3.보낼데이터(data) - 객체형식
+            data:{"mid":$('#mid').val()},
+            // 4.전송할데이터타입(dataType)
+            dataType:"html",
+            // 5.비동기옵션(async)     
+            // -> 비동기옵션은 본처리를 비동기적으로 처리하겠다는 것
+            // -> 기본값 true
+            // false로 해야 동기화 처리되어 불통과시 pass = false가 유효함
+            async:false,
+            // 6.성공처리(success)
+            success:function(res){
+              // res 리턴된 결과값
+              if(res =='ok'){
+                  $('#mid').siblings('.msg').text('멋진 아이디네요').addClass('on')
+                }/// if //// : ok 시
+                // 아이디가 중복일 경우
+                else{
+                $('#mid').siblings('.msg').text('이미 사용중인 아이디입니다').removeClass('on')
+                //  [불통과 시 pass값 변경추가]
+                pass = false;
+                  console.log('중복ID:',pass)
+              } // else : 아이디중복
+            },
+            // 7.실패처리(error)
+            // xhr - XMLHttpRequest객체
+            // status - 실패상태코드
+            // error - 에러결과값
+            error:function(xhr,status,error){
+              alert('연결처리실패:'+error);
+            } ///error ///
+          }); ///// ajax 메서드 /////
+
+
+        /*  
+        
+         [ Ajax로 중복아이디 검사하기 ]
+          ajax 처리 유형 2가지
+
+          1) post 방식 처리 메서드
+          - $.post(URL,data,callback)
+
+          2) get 방식 처리 메서드
+          - $.get(URL,callback)
+          -> get방식은 URL로 키=값 형식으로 데이터전송함
+        
+          3) 위의 2가지 유형 중 처리선택 메서드
+          - $.ajax({
+              전송할페이지,
+              전송방식,
+              보낼데이터,
+              전송할데이터타입,
+              비동기옵션,
+              성공처리,
+              실패처리
+          })
+          -> 보내는 값은 하나(객체데이터)
+          -> 객체안에 7가지 유형의 데이터를 보냄
+        */
+
+
+
+
+
         // 1. DB에 조회하여 같은 아이디가 있다면 '이미 사용중인 아이디입니다'
         // 와같은 메시지를 출력
         // 2. 만약 DB 조회하여 같은 아이디가 없다면
@@ -180,7 +251,7 @@ form.logF input[type=password]`)
         // 여기서 우선은 DB조회 못하므로 통과시 메시지로 출력
 
         // 메시지 띄우기
-        $(this).siblings('.msg').text('멋진 아이디네요').addClass('on')
+        // $(this).siblings('.msg').text('멋진 아이디네요').addClass('on')
         //-> 비동기 통신 Ajax 로 서버쪽에 아이디 중복검사 필요
       } ///else ////
       
@@ -519,7 +590,7 @@ if(pass){
         /// 성공시 ///
         if(res === 'ok'){
           alert('회원가입을 축하드립니');
-          // location.replace('login.php');
+          location.replace('login.php');
         } // if: 성공시
         //  실패시
         else{

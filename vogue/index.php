@@ -24,6 +24,9 @@
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
+    <!-- 로그인 처리 인클루드파일 호출 -->
+    <?php include "inc/login_session.inc" ?>
+
     <!-- 상단 영역 -->
     <?php include "inc/top_area.inc" ?>
     <!-- 메인 영역 -->
